@@ -1,5 +1,8 @@
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "./components/modal"
+import { useModal } from "./hooks/use-modal"
 
 function App() {
+  const { control } = useModal('modal')
   return (
     <div className="max-w-screen-md py-20 mx-auto grid gap-8">
       <div className="text-center">
@@ -34,8 +37,40 @@ function App() {
           </p>
         </div>
       </div>
+      <button onClick={() => control.openModal()}>모달 테스트</button>
+      {control.renderModal(<TestModal handleClose={control.closeModal} />)}
     </div>
   )
+}
+
+
+function TestModal(props: { handleClose: () => void }) {
+  return (
+    <Modal>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <h2>모달 제목</h2>
+          <p>모달에 대한 설명이에요</p>
+        </ModalHeader>
+        <ModalBody>
+          <p>
+            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,
+            by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
+            you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend
+            to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words,
+            combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is
+            therefore always free from repetition, injected humour, or non-characteristic words etc.
+          </p>
+        </ModalBody>
+        <ModalFooter>
+          <div className="w-fit ml-auto space-x-4">
+            <button onClick={props.handleClose}>닫기</button>
+            <button>확인</button>
+          </div>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>)
 }
 
 export default App
