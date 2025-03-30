@@ -1,1 +1,47 @@
 @import "tailwindcss";
+
+:root {
+}
+
+@theme {
+  --color-text-primary: rgb(28, 28, 28);
+  --color-text-secondary: rgb(74, 74, 74);
+  --color-text-caption: rgb(112, 112, 112);
+}
+
+@layer base {
+  h1 {
+    /* head1 */
+    @apply text-4xl font-semibold text-text-primary;
+  }
+  h2 {
+    /* head2 */
+    @apply text-2xl font-semibold text-text-primary;
+  }
+  h3 {
+    /* head3 text */
+    @apply text-xl font-semibold text-text-primary;
+  }
+  h4 {
+    /* subhead1 text */
+    @apply text-lg font-semibold text-text-primary;
+  }
+  h5 {
+    /* subhead2 text */
+    @apply text-base font-semibold text-text-primary;
+  }
+  h6 {
+    /* subhead3 text*/
+    @apply text-sm font-semibold text-text-primary;
+  }
+  p,
+  span {
+    /* body text */
+    @apply text-base text-text-secondary;
+  }
+  small,
+  caption {
+    /* caption text */
+    @apply text-base text-text-caption;
+  }
+}
